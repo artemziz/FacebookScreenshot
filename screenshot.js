@@ -70,7 +70,7 @@ function getUserScreenshot(picture){
 
 function getPageScreenshot(picture){
     let a = document.createElement('a');
-    a.setAttribute("download","picture");
+    a.setAttribute("download",getName(picture));
     
     
     
