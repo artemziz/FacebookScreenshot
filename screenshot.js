@@ -23,7 +23,7 @@ function formatDate(unix_timestamp){
 }
 function getName(picture){
     let username = document.body.getElementsByClassName('_2s25 _606w')[0].href.replace('https://www.facebook.com/','');
-    let date = picture.getElementsByTagName('abbr')[0].dataset.utime;
+    let date = picture.getElementsByTagName('abbr')[0].dataset.utime || "31052020";
     let postId = picture.getElementsByClassName('_5pcq')[0].href;
     postId = postId.substr(postId.lastIndexOf('/')+1);
     return `${formatDate(date)}_${username}_${postId}`
