@@ -1,0 +1,10 @@
+button{
+    padding: 12px;
+    margin-top: 5px;
+}
+body{
+    padding: 10x;
+}
+#removeHighlights{
+    display: none;
+}
