@@ -32,7 +32,7 @@ function getUserScreenshot(picture){
     
     
     let a = document.createElement('a');
-    a.setAttribute("download",getName(picture));
+    a.setAttribute("download","picture");
     
     window.scrollTo(0,0);
     
@@ -70,7 +70,7 @@ function getUserScreenshot(picture){
 
 function getPageScreenshot(picture){
     let a = document.createElement('a');
-    a.setAttribute("download",getName(picture));
+    a.setAttribute("download","picture");
     
     
     
