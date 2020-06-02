@@ -3,7 +3,7 @@
     "version": "1.0",
     "description": "Screenshot of Facebook post",
     "manifest_version": 2,
-    "permissions": ["activeTab","declarativeContent"],
+    "permissions": ["tabs","activeTab","declarativeContent"],
     "background": {
         "scripts": ["background.js"],
         "persistent": false

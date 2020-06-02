@@ -61,3 +61,27 @@ function addScreenshotButton(post){
     
 }
 
+function getScreenshot(post){
+    let url;
+    
+    if(post.getElementsByClassName('h_cq-ddq58z o_cq-ddq59g')[0]){
+        const mouseoverEvent = new Event('mouseover');
+        post.getElementsByClassName('h_cq-ddq58z o_cq-ddq59g')[0].dispatchEvent(mouseoverEvent);
+        url = post.getElementsByClassName('h_cq-ddq58z o_cq-ddq59g')[0].href;
+    }
+    else if(post.querySelector('a[rel="theater"]')){
+        url = post.querySelector('a[rel="theater"]').href;
+    }else if(post.getElementsByClassName('_5pcq')[0]){
+        url = post.getElementsByClassName('_5pcq')[0].href;
+    }
+    if(url){
+        chrome.runtime.sendMessage({getScreenshot:url},(response)=>{
+            console.log(response);
+            
+        })
+    }else{
+        console.log("Wrong url");
+        
+    }
+    
+}

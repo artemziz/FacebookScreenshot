@@ -1,17 +1,33 @@
-let scroll;
-function getScreenshot(post){
-    scroll = {
-        x:window.pageXOffset,
-        y:window.pageYOffset
-    }
-  
-    if(post.getElementsByClassName('_3vuz')[0].childNodes.length===3){
-        return getPageScreenshot(post);
-    }else{
-        return getUserScreenshot(post);
+
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        if(request.message == "getScreenshot"){
+            console.log(request.message);
+            let post = document.body.getElementsByClassName('_5pcr userContentWrapper')[0];
+
+            if(post.getElementsByClassName('_3vuz')[0].childNodes.length===3){
+                        return getPageScreenshot(post);
+                    }else{
+                        return getUserScreenshot(post);
+                        
+                    }
+        }
         
     }
-}
+)
+// function getScreenshot(post){
+//     scroll = {
+//         x:window.pageXOffset,
+//         y:window.pageYOffset
+//     }
+  
+//     if(post.getElementsByClassName('_3vuz')[0].childNodes.length===3){
+//         return getPageScreenshot(post);
+//     }else{
+//         return getUserScreenshot(post);
+        
+//     }
+// }
 
 function formatDate(unix_timestamp){
     let date = new Date(unix_timestamp * 1000);
@@ -23,16 +39,17 @@ function formatDate(unix_timestamp){
 }
 function getName(picture){
     let username = document.body.getElementsByClassName('_2s25 _606w')[0].href.replace('https://www.facebook.com/','');
-    let date = picture.getElementsByTagName('abbr')[0].dataset.utime || "31052020";
+    let date = picture.getElementsByTagName('abbr')[0].dataset.utime;
     let postId = picture.getElementsByClassName('_5pcq')[0].href;
     postId = postId.substr(postId.lastIndexOf('/')+1);
+    postId = postId.substr(0,postId.indexOf('?'));
     return `${formatDate(date)}_${username}_${postId}`
 }
 function getUserScreenshot(picture){
     
     
     let a = document.createElement('a');
-    a.setAttribute("download","picture");
+    a.setAttribute("download",getName(picture));
     
     window.scrollTo(0,0);
     
@@ -62,15 +79,15 @@ function getUserScreenshot(picture){
         a.click();
         
     }).then(()=>{
-        window.scrollTo(scroll.x,scroll.y);
+ 
         document.body.removeChild(a);
-        
+        //window.close();
     })
 }
 
 function getPageScreenshot(picture){
     let a = document.createElement('a');
-    a.setAttribute("download","picture");
+    a.setAttribute("download",getName(picture));
     
     
     
@@ -100,8 +117,8 @@ function getPageScreenshot(picture){
         
         
     }).then(()=>{
-        window.scrollTo(scroll.x,scroll.y);
+
         document.body.removeChild(a);
-        
+        // setTimeout(window.close(),5000) ;
     })
 }
