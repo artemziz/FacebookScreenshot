@@ -62,6 +62,18 @@ function addScreenshotButton(post){
 }
 
 function getScreenshot(post){
+    let url = getUrl(post);
+
+    if(url){
+        chrome.runtime.sendMessage({getScreenshot:url});
+    }else{
+        console.log("Wrong url");
+        
+    }
+    
+}
+
+function getUrl(post){
     let url;
     
     if(post.getElementsByClassName('h_cq-ddq58z o_cq-ddq59g')[0]){
@@ -74,14 +86,6 @@ function getScreenshot(post){
     }else if(post.getElementsByClassName('_5pcq')[0]){
         url = post.getElementsByClassName('_5pcq')[0].href;
     }
-    if(url){
-        chrome.runtime.sendMessage({getScreenshot:url},(response)=>{
-            console.log(response);
-            
-        })
-    }else{
-        console.log("Wrong url");
-        
-    }
-    
+
+    return url;
 }

@@ -12,7 +12,6 @@ chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
     console.log(request);
     if(request.getScreenshot){
-      sendResponse("getScreenshot");
       
       chrome.tabs.create({"url":request.getScreenshot,"selected":false},tab=>{
         chrome.tabs.onUpdated.addListener(function listener (tabId, info) {
