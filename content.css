@@ -1,10 +1,14 @@
 .highlight{
-    outline:5px solid pink;
+    outline:5px solid #29487d;
 }
 .getScreenshot{
-    padding: 5px;
+    padding: 12px;
     margin: 12px auto;
     display: block;
-    
+    background-color:#4267b2;
+    border:none;
+    color:white;
+    text-align: center;
+    text-decoration: none;
     
 }

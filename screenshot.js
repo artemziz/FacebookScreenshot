@@ -78,19 +78,13 @@ function getUserScreenshot(picture){
         document.body.appendChild(a);
         a.click();
         
-    }).then(()=>{
- 
-        document.body.removeChild(a);
-        //window.close();
     })
 }
 
 function getPageScreenshot(picture){
     let a = document.createElement('a');
     a.setAttribute("download",getName(picture));
-    
-    
-    
+        
     window.scrollTo(0,0);
     html2canvas(picture,{
         allowTaint:true,
@@ -116,9 +110,5 @@ function getPageScreenshot(picture){
          
         
         
-    }).then(()=>{
-
-        document.body.removeChild(a);
-        // setTimeout(window.close(),5000) ;
     })
 }

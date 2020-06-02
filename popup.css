@@ -1,10 +1,19 @@
 button{
     padding: 12px;
     margin-top: 5px;
+    background-color:#4267b2;
+    border:none;
+    color:white;
+    text-align: center;
+    text-decoration: none;
 }
 body{
     padding: 10x;
 }
 #removeHighlights{
     display: none;
+}
+input{
+    padding: 5px;
+    text-decoration: none;
 }
