@@ -6,11 +6,12 @@ chrome.runtime.onMessage.addListener(
             let post = document.body.getElementsByClassName('_5pcr userContentWrapper')[0];
 
             if(post.getElementsByClassName('_3vuz')[0].childNodes.length===3){
-                        return getPageScreenshot(post);
+                        getPageScreenshot(post);
                     }else{
-                        return getUserScreenshot(post);
+                        getUserScreenshot(post);
                         
                     }
+            setTimeout(()=>window.close(),20000);
         }
         
     }
