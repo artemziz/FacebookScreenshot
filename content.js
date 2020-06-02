@@ -27,8 +27,11 @@ function highlightPosts(){
     let posts = Array.from(document.body.getElementsByClassName('_5pcr userContentWrapper'));
     
     posts.forEach(post =>{
-        post.classList.add('highlight');  
-        addScreenshotButton(post);
+        if(!post.getElementsByClassName('d_cq-ddq58w z_cq-ddq591')[0] || post.getElementsByClassName('d_cq-ddq58w z_cq-ddq591')[0].innerHTML !== "Реклама"){
+            post.classList.add('highlight');  
+            addScreenshotButton(post);
+        }
+        
     })
     
 }
