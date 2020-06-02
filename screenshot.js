@@ -43,7 +43,10 @@ function getName(picture){
     let date = picture.getElementsByTagName('abbr')[0].dataset.utime;
     let postId = picture.getElementsByClassName('_5pcq')[0].href;
     postId = postId.substr(postId.lastIndexOf('/')+1);
-    postId = postId.substr(0,postId.indexOf('?'));
+    if(postId.indexOf('?')!==-1){
+        postId = postId.substr(0,postId.indexOf('?'));
+    }
+    
     return `${formatDate(date)}_${username}_${postId}`
 }
 function getUserScreenshot(picture){
@@ -106,10 +109,6 @@ function getPageScreenshot(picture){
         a.href = canvas.toDataURL("image/png");
         document.body.appendChild(a);
         a.click();
-        
-        
-         
-        
-        
+           
     })
 }
