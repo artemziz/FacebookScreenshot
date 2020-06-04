@@ -27,7 +27,7 @@ function highlightPosts(){
     let posts = Array.from(document.body.getElementsByClassName('_5pcr userContentWrapper'));
     
     posts.forEach(post =>{
-        if(!post.getElementsByClassName('d_cq-ddq58w z_cq-ddq591')[0] || post.getElementsByClassName('d_cq-ddq58w z_cq-ddq591')[0].innerHTML !== "Реклама"){
+        if(!post.getElementsByClassName('_4nef') || !post.getElementsByClassName('d_cq-ddq58w z_cq-ddq591')[0] || post.getElementsByClassName('d_cq-ddq58w z_cq-ddq591')[0].innerHTML !== "Реклама"){
             post.classList.add('highlight');  
             addScreenshotButton(post);
         }
@@ -57,14 +57,14 @@ function addScreenshotButton(post){
         post.after(button);
         
         button.addEventListener('click',()=>{
-            getScreenshot(post);
+            clickedGetScreenshot(post);
         })
         post.setAttribute('haveButton',true);
     }
     
 }
 
-function getScreenshot(post){
+function clickedGetScreenshot(post){
     let url = getUrl(post);
 
     if(url){
@@ -84,10 +84,10 @@ function getUrl(post){
         post.getElementsByClassName('h_cq-ddq58z o_cq-ddq59g')[0].dispatchEvent(mouseoverEvent);
         url = post.getElementsByClassName('h_cq-ddq58z o_cq-ddq59g')[0].href;
     }
-    else if(post.querySelector('a[rel="theater"]')){
-        url = post.querySelector('a[rel="theater"]').href;
-    }else if(post.getElementsByClassName('_5pcq')[0]){
+    else if(post.getElementsByClassName('_5pcq')[0]){
         url = post.getElementsByClassName('_5pcq')[0].href;
+    }else if(post.querySelector('a[rel="theater"]')){
+        url = post.querySelector('a[rel="theater"]').href;
     }
 
     return url;
