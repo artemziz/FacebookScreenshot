@@ -65,7 +65,7 @@ function getName(picture){
         postId = postId.substr(0,postId.indexOf('?'));
     }
     
-    return `${formatDate(date)}_${username}_${postId}`
+    return `${formatDate(date)}_${username}_${postId}.png`
 }
 function getScreenshot(picture){
     
