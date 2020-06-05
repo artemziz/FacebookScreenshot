@@ -2,12 +2,12 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if(request.message == "getScreenshot"){
-
+            
             let post = document.body.getElementsByClassName('_5pcr userContentWrapper')[0];
 
             post = clearPost(post);
             getScreenshot(post);
-            //setTimeout(()=>window.close(),20000);
+            setTimeout(()=>window.close(),20000);
         }
         
     }
@@ -42,19 +42,6 @@ function clearUserPost(post){
     post.getElementsByClassName('_3w53')[0].remove();
     return post;
 }
-// function getScreenshot(post){
-//     scroll = {
-//         x:window.pageXOffset,
-//         y:window.pageYOffset
-//     }
-  
-//     if(post.getElementsByClassName('_3vuz')[0].childNodes.length===3){
-//         return getPageScreenshot(post);
-//     }else{
-//         return getUserScreenshot(post);
-        
-//     }
-// }
 
 function formatDate(unix_timestamp){
     let date = new Date(unix_timestamp * 1000);
