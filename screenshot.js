@@ -15,13 +15,17 @@ chrome.runtime.onMessage.addListener(
 
 function clearPost(post){
     let link;
-    if(post.getElementsByClassName('clearfix r_cq-ddoytd')[0].getElementsByClassName('fwb fcg')[0]){
-        if(post.getElementsByClassName('clearfix r_cq-ddoytd')[0].getElementsByClassName('fwb fcg')[0].children[0]){
-            link = post.getElementsByClassName('clearfix r_cq-ddoytd')[0].getElementsByClassName('fwb fcg')[0].children[0].href;
-        }
-       
+
+    if(post.getElementsByClassName('clearfix r_cq-ddoytd')[0]
+    && post.getElementsByClassName('clearfix r_cq-ddoytd')[0].getElementsByClassName('fwb fcg')[0]
+    && post.getElementsByClassName('clearfix r_cq-ddoytd')[0].getElementsByClassName('fwb fcg')[0].children[0]){
+
+        link = post.getElementsByClassName('clearfix r_cq-ddoytd')[0].getElementsByClassName('fwb fcg')[0].children[0].href;
+    
     }else if(post.getElementsByClassName('profileLink')[0]){
+
         link = post.getElementsByClassName('profileLink')[0].href;
+
     }
      
     //if(post.getElementsByClassName('_3vuz')[0].childNodes.length===3)
@@ -71,7 +75,6 @@ function getScreenshot(picture){
     
     let a = document.createElement('a');
     a.setAttribute("download",getName(picture));
-    console.log(picture.getElementsByClassName('mbs _6m6 _2cnj _5s6c')[0].children[0].innerHTML);
     
     window.scrollTo(0,0);
     html2canvas(picture,{
