@@ -2,12 +2,18 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if(request.message == "getScreenshot"){
+            try{
+                let post = document.body.getElementsByClassName('_5pcr userContentWrapper')[0];
 
-            let post = document.body.getElementsByClassName('_5pcr userContentWrapper')[0];
-
-            post = clearPost(post);
-            getScreenshot(post);
-            setTimeout(()=>window.close(),20000);
+                post = clearPost(post);
+                getScreenshot(post);
+            }catch(e){
+                chrome.runtime.sendMessage({error:e})
+            }finally{
+                setTimeout(()=>window.close(),20000);
+            }
+            
+            
         }
         
     }
