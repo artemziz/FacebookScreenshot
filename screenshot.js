@@ -2,7 +2,7 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if(request.message == "getScreenshot"){
-            
+
             let post = document.body.getElementsByClassName('_5pcr userContentWrapper')[0];
 
             post = clearPost(post);

@@ -4,15 +4,7 @@ const link = document.getElementById('link');
 button.addEventListener('click',function(tabs){
   
   if(link.value && link.value.indexOf('https://www.facebook.com')===0){
-    chrome.tabs.create({"url":link.value,"selected":false},tab=>{
-      chrome.tabs.onUpdated.addListener(function listener (tabId, info) {
-        if (info.status === 'complete' && tabId === tab.id) {
-            chrome.tabs.onUpdated.removeListener(listener);
-            chrome.tabs.sendMessage(tab.id,{message: "getScreenshot"});
-        }
-    });
-      
-    })
+    chrome.runtime.sendMessage({getScreenshot:link.value});
   }else{
     button.style.display = 'none';
     link.style.display = 'none';
