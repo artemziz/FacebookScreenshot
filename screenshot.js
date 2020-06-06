@@ -63,7 +63,9 @@ function getName(picture){
     if(postId.slice(-1)=='/'){
         postId = postId.slice(0,-1);
     }
-
+    if(postId[postId.lastIndexOf('/')+1]=='?'){
+        postId = postId.slice(0,postId.lastIndexOf('/'));
+    }
     postId = postId.substr(postId.lastIndexOf('/')+1);
     if(postId.indexOf('?')!==-1){
         postId = postId.substr(0,postId.indexOf('?'));
